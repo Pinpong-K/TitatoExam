@@ -1,4 +1,4 @@
-package com.exam;
+package TitatoExam;
 
 import java.util.Scanner;
 
@@ -27,6 +27,8 @@ public class Main {
                 System.out.println("O WIN!!!!!");
                 break;
             }
+
+
             System.out.print("Enter the coordinates X : ");
             target = scan.nextLine();
             while(!gameManager.playerTwoPlay(target)) {

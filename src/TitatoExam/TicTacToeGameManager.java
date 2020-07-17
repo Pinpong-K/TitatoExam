@@ -1,4 +1,4 @@
-package com.exam;
+package TitatoExam;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -62,7 +62,7 @@ public class TicTacToeGameManager {
         //cast to int
         int[] targetInInt = Arrays.stream(target).mapToInt(Integer::parseInt).toArray();
         //check target in range
-        if(targetInInt[0] >= 1 && targetInInt[0] <= rowCount || targetInInt[1] >= 1 && targetInInt[1] <= colCount) {
+        if(targetInInt[0] >= 1 && targetInInt[0] <= rowCount && targetInInt[1] >= 1 && targetInInt[1] <= colCount) {
             //set ot game table change block stage to X
             gameTable[targetInInt[0] - 1][targetInInt[1] - 1].setBlockStage(BlockEntry.BlockStage.O);
         }else {
@@ -88,7 +88,7 @@ public class TicTacToeGameManager {
         //cast to int
         int[] targetInInt = Arrays.stream(target).mapToInt(Integer::parseInt).toArray();
         //check target in range
-        if(targetInInt[0] >= 1 && targetInInt[0] <= rowCount || targetInInt[1] >= 1 && targetInInt[1] <= colCount) {
+        if(targetInInt[0] >= 1 && targetInInt[0] <= rowCount && targetInInt[1] >= 1 && targetInInt[1] <= colCount) {
             //set ot game table change block stage to X
             gameTable[targetInInt[0] - 1][targetInInt[1] - 1].setBlockStage(BlockEntry.BlockStage.X);
         }else {
@@ -103,12 +103,12 @@ public class TicTacToeGameManager {
         BlockEntry.BlockStage sideWin = BlockEntry.BlockStage.NONE;
 
         //check horizontal
-        for (int i = 0; i<this.colCount; i++)
+        for (int i = 0; i<this.rowCount; i++)
         {
             BlockEntry.BlockStage temWinSide = gameTable[i][0].getBlockStage();
             if(temWinSide == BlockEntry.BlockStage.NONE)
-                break;
-            for(int j = 1; j<this.rowCount; j++)
+                continue;
+            for(int j = 0; j<this.colCount; j++)
             {
                 if(temWinSide != gameTable[i][j].getBlockStage())
                     break;
@@ -119,19 +119,18 @@ public class TicTacToeGameManager {
                     {
                         sideWin = temWinSide;
                         return sideWin;
-
                     }
                 }
             }
         }
 
         //check vertical
-        for (int i = 0; i<this.rowCount; i++)
+        for (int i = 0; i<this.colCount; i++)
         {
             BlockEntry.BlockStage temWinSide = gameTable[0][i].getBlockStage();
             if(temWinSide == BlockEntry.BlockStage.NONE)
-                break;
-            for(int j = 1; j<this.colCount; j++)
+                continue;
+            for(int j = 0; j<this.rowCount; j++)
             {
                 if(temWinSide != gameTable[j][i].getBlockStage())
                     break;

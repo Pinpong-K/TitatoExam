@@ -1,4 +1,4 @@
-package com.exam;
+package TitatoExam;
 
 public class BlockEntry {
 
